@@ -1,7 +1,7 @@
 const compression = require('compression');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3001;
 const router = require('./routes.js');
 const cookieParser = require('cookie-parser');
 app.use(compression());

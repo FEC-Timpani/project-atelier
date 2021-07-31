@@ -6,24 +6,25 @@ module.exports = {
   getAllQuestions: (req, res) => {
     axios({
       method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions',
+      url: 'http://localhost:3000/qa/questions',
       headers: {
         'Authorization': `${config.TOKEN}`
       },
       params: {
         'product_id': `${req.query.id}`,
         'page': 1,
-        'count': 40
+        'count': 5
       }
     }).then(result => {
+      console.log('test data!!!!', result.data)
       res.send(result.data);
-    }).catch(err => console.log(err));
+    }).catch(err => console.log('error at get all questions', err));
   },
 
   markAnswerHelpful: (req, res) => {
     axios({
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.id}/helpful`,
+      url: `http://localhost:3000/qa/answers/${req.body.id}/helpful`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
@@ -35,7 +36,7 @@ module.exports = {
   markQuestionHelpful: (req, res) => {
     axios({
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.id}/helpful`,
+      url: `https://localhost:3000/qa/questions/${req.body.id}/helpful`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
@@ -49,7 +50,7 @@ module.exports = {
     var questionID = parseInt(req.body.questionID)
     axios({
       method: 'post',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${questionID}/answers`,
+      url: `https://localhost:3000/qa/questions/${questionID}/answers`,
       headers: {
         'Authorization': `${config.TOKEN}`
       },
@@ -66,7 +67,7 @@ module.exports = {
     console.log(data, 'data in post q after mod')
     axios({
       method: 'post',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions',
+      url: 'https://localhost:3000/qa/questions',
       headers: {
         'Authorization': `${config.TOKEN}`
       },
@@ -79,7 +80,7 @@ module.exports = {
   reportAnswer: (req, res) => {
     axios({
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/report`,
+      url: `https://localhost:3000/qa/answers/${req.body.answer_id}/report`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }

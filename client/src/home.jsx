@@ -8,7 +8,7 @@ class Home extends React.Component {
     super(props);
     const params = new URLSearchParams(this.props.location.search);
     let id = params.get('product');
-    id = id === null ? 28212 : id;
+    id = id === null ? 36300 : id;
     this.state = {
       id: id,
       colorTheme: 'Light'

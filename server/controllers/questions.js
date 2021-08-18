@@ -1,12 +1,14 @@
 const axios = require('axios');
 const config = require('../../config.js');
 
+var BASE_URL = `http://18.118.216.175`;
+
 module.exports = {
 
   getAllQuestions: (req, res) => {
     axios({
       method: 'get',
-      url: 'http://localhost:3000/qa/questions',
+      url: `${BASE_URL}/qa/questions`,
       headers: {
         'Authorization': `${config.TOKEN}`
       },
@@ -24,7 +26,7 @@ module.exports = {
   markAnswerHelpful: (req, res) => {
     axios({
       method: 'put',
-      url: `http://localhost:3000/qa/answers/${req.body.id}/helpful`,
+      url: `${BASE_URL}/qa/answers/${req.body.id}/helpful`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
@@ -36,7 +38,7 @@ module.exports = {
   markQuestionHelpful: (req, res) => {
     axios({
       method: 'put',
-      url: `https://localhost:3000/qa/questions/${req.body.id}/helpful`,
+      url: `${BASE_URL}/qa/questions/${req.body.id}/helpful`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
@@ -50,7 +52,7 @@ module.exports = {
     var questionID = parseInt(req.body.questionID)
     axios({
       method: 'post',
-      url: `https://localhost:3000/qa/questions/${questionID}/answers`,
+      url: `${BASE_URL}/qa/questions/${questionID}/answers`,
       headers: {
         'Authorization': `${config.TOKEN}`
       },
@@ -67,7 +69,7 @@ module.exports = {
     console.log(data, 'data in post q after mod')
     axios({
       method: 'post',
-      url: 'https://localhost:3000/qa/questions',
+      url: `${BASE_URL}/qa/questions`,
       headers: {
         'Authorization': `${config.TOKEN}`
       },
@@ -80,7 +82,7 @@ module.exports = {
   reportAnswer: (req, res) => {
     axios({
       method: 'put',
-      url: `https://localhost:3000/qa/answers/${req.body.answer_id}/report`,
+      url: `${BASE_URL}/qa/answers/${req.body.answer_id}/report`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }

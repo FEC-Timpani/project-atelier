@@ -1,6 +1,7 @@
 const axios = require('axios');
 const config = require('../../config.js');
 
+var BASE_URL =
 
 module.exports = {
   getRelatedProducts: (req, res) => {
@@ -9,7 +10,7 @@ module.exports = {
     // get list of related products
     axios({
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.item}/related`,
+      url: `${BASE_URL}/${req.query.item}/related`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
@@ -26,7 +27,7 @@ module.exports = {
       return axios.all(relatedProductIds.map((relatedProductID) =>
         axios({
           method: 'get',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${relatedProductID}`,
+          url: `${BASE_URL}/${relatedProductID}`,
           headers: {
             'Authorization': `${config.TOKEN}`
           }
@@ -45,7 +46,7 @@ module.exports = {
       return axios.all(relatedProductIds.map((relatedProductID) =>
         axios({
           method: 'get',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${relatedProductID}/styles`,
+          url: `${BASE_URL}/products/${relatedProductID}/styles`,
           headers: {
             'Authorization': `${config.TOKEN}`
           }
@@ -65,7 +66,7 @@ module.exports = {
       return axios.all(relatedProductIds.map((relatedProductID) =>
         axios({
           method: 'get',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta/?product_id=${relatedProductID}`,
+          url: `${BASE_URL}/reviews/meta/?product_id=${relatedProductID}`,
           headers: {
             'Authorization': `${config.TOKEN}`
           }
@@ -105,7 +106,7 @@ module.exports = {
   getFeatures: (req, res) => {
     axios({
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.item}`,
+      url: `${BASE_URL}/products/${req.query.item}`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
@@ -129,7 +130,7 @@ module.exports = {
     axios.all(outfitIds.map((itemID) =>
       axios({
         method: 'get',
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${itemID}`,
+        url: `${BASE_URL}/products/${itemID}`,
         headers: {
           'Authorization': `${config.TOKEN}`
         }
@@ -146,7 +147,7 @@ module.exports = {
       return axios.all(outfitIds.map((outfitID) =>
         axios({
           method: 'get',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${outfitID}/styles`,
+          url: `${BASE_URL}/products/${outfitID}/styles`,
           headers: {
             'Authorization': `${config.TOKEN}`
           }
@@ -166,7 +167,7 @@ module.exports = {
       return axios.all(outfitIds.map((outfitID) =>
         axios({
           method: 'get',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta/?product_id=${outfitID}`,
+          url: `${BASE_URL}/reviews/meta/?product_id=${outfitID}`,
           headers: {
             'Authorization': `${config.TOKEN}`
           }

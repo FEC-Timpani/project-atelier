@@ -1,6 +1,7 @@
 const axios = require('axios');
 const config = require('../../config.js');
 
+var BASE_URL = 'http://54.151.67.235';
 
 module.exports = {
   getReviewsForOneProduct: (req, res) => {
@@ -8,7 +9,7 @@ module.exports = {
     var data = {};
     axios({
       method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
+      url: `${BASE_URL}/reviews`,
       headers: {
         'Authorization': `${config.TOKEN}`
       },
@@ -21,7 +22,7 @@ module.exports = {
         data.reviews = reviews.data;
         return axios({
           method: 'get',
-          url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta',
+          url: `${BASE_URL}/reviews/meta`,
           headers: {
             'Authorization': `${config.TOKEN}`
           },
@@ -51,7 +52,7 @@ module.exports = {
     console.log(data);
     axios({
       method: 'post',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
+      url: `${BASE_URL}/reviews`,
       headers: {
         'Authorization': `${config.TOKEN}`
       },
@@ -65,7 +66,7 @@ module.exports = {
     const review_id = Number(req.body.review_id);
     axios({
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${review_id}/helpful`,
+      url: `${BASE_URL}/reviews/${review_id}/helpful`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
@@ -84,7 +85,7 @@ module.exports = {
 
     axios({
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${review_id}/report`,
+      url: `${BASE_URL}/reviews/${review_id}/report`,
       headers: {
         'Authorization': `${config.TOKEN}`
       }
